@@ -7,10 +7,14 @@ export default function Auth() {
 
   const handleLogin = async (e: SubmitEvent) => {
     e.preventDefault()
-
     try {
       setLoading(true)
-      const { error } = await supabase.auth.signInWithOtp({ email: email() })
+      const { error } = await supabase.auth.signInWithOtp({
+        email: email(),
+        options: {
+          emailRedirectTo: 'https://deanjstone.github.io/supa-solid-user/',
+        },
+      })
       if (error) throw error
       alert('Check your email for the login link!')
     } catch (error) {
