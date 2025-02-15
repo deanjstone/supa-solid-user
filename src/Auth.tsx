@@ -9,10 +9,14 @@ export default function Auth() {
     e.preventDefault()
     try {
       setLoading(true)
+      const redirectTo = import.meta.env.DEV 
+        ? 'http://localhost:3000'
+        : 'https://deanjstone.github.io/supa-solid-user/'
+        
       const { error } = await supabase.auth.signInWithOtp({
         email: email(),
         options: {
-          emailRedirectTo: 'https://deanjstone.github.io/supa-solid-user/',
+          emailRedirectTo: redirectTo,
         },
       })
       if (error) throw error
