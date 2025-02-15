@@ -9,10 +9,7 @@ export default function Auth() {
     e.preventDefault()
     try {
       setLoading(true)
-      const redirectTo = import.meta.env.DEV 
-        ? 'http://localhost:3000/'
-        : 'https://deanjstone.github.io/supa-solid-user/'
-        
+      const redirectTo = import.meta.env.VITE_SUPABASE_REDIRECT_URL
       const { error } = await supabase.auth.signInWithOtp({
         email: email(),
         options: {
