@@ -42,6 +42,8 @@ jobs:
         uses: pnpm/action-setup@v2
         with:
           version: latest
+      - name: Verify pnpm installation
+        run: pnpm --version
       - name: Install dependencies
         run: pnpm install
       - name: Build
