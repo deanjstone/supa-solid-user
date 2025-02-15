@@ -10,7 +10,7 @@ export default function Auth() {
     try {
       setLoading(true)
       const redirectTo = import.meta.env.DEV 
-        ? 'http://localhost:3000'
+        ? 'http://localhost:3000/'
         : 'https://deanjstone.github.io/supa-solid-user/'
         
       const { error } = await supabase.auth.signInWithOtp({
