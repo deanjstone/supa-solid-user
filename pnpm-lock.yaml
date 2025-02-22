@@ -14,6 +14,9 @@ dependencies:
   solid-js:
     specifier: ^1.9.3
     version: 1.9.4
+  solid-supabase:
+    specifier: ^0.5.0
+    version: 0.5.0(@supabase/supabase-js@2.48.1)(solid-js@1.9.4)
   solid-toast:
     specifier: ^0.5.0
     version: 0.5.0(solid-js@1.9.4)
@@ -989,6 +992,16 @@ packages:
     transitivePeerDependencies:
       - supports-color
     dev: true
+
+  /solid-supabase@0.5.0(@supabase/supabase-js@2.48.1)(solid-js@1.9.4):
+    resolution: {integrity: sha512-V3oDbfY0ttc6OGijI2NK8Z1GUhdODXhGpvXRdA5NR4UW0WV1aqYf845VZh6ve320d7mBOmOBfJrIqSqE/UZcMA==}
+    peerDependencies:
+      '@supabase/supabase-js': ^2.0.0
+      solid-js: ^1.6.0
+    dependencies:
+      '@supabase/supabase-js': 2.48.1
+      solid-js: 1.9.4
+    dev: false
 
   /solid-toast@0.5.0(solid-js@1.9.4):
     resolution: {integrity: sha512-t770JakjyS2P9b8Qa1zMLOD51KYKWXbTAyJePVUoYex5c5FH5S/HtUBUbZAWFcqRCKmAE8KhyIiCvDZA8bOnxQ==}
