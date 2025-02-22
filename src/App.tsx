@@ -1,49 +1,49 @@
-import { Component, createEffect, createSignal } from 'solid-js';
-import { supabase } from './supabaseClient';
-import { AuthSession } from '@supabase/supabase-js';
-import Account from './Account';
-import Auth from './Auth';
-import Dashboard from './Dashboard';
-import { Toaster } from 'solid-toast';
+import { Suspense, Component, JSX } from "solid-js";
+import { A, useLocation } from "@solidjs/router";
 
-const App: Component = () => {
-  const [session, setSession] = createSignal<AuthSession | null>(null);
-  const [showAccount, setShowAccount] = createSignal(false);
+type AppProps = {
+  children?: JSX.Element;
+};
 
-  createEffect(() => {
-    supabase.auth.getSession().then(({ data: { session } }) => {
-      setSession(session);
-    });
-
-    supabase.auth.onAuthStateChange((_event, session) => {
-      setSession(session);
-    });
-  });
+const App: Component<AppProps> = (props) => {
+  const location = useLocation();
 
   return (
-    <div class="container" style={{ padding: '50px 0 100px 0' }}>
-      {!session() ? <Auth /> : showAccount() ? <Account session={session()!} /> : <Dashboard />}
-      {session() && !showAccount() && (
-        <button onClick={() => setShowAccount(true)}>Go to Account</button>
-      )}
-      {session() && showAccount() && (
-        <button onClick={() => setShowAccount(false)}>Go to Dashboard</button>
-      )}
-      <Toaster position="top-center"
-        // Spacing between each toast in pixels
-        gutter={8}
-        containerClassName=""
-        containerStyle={{}}
-        toastOptions={{
-          // Define default options that each toast will inherit. Will be overwritten by individual toast options
-          className: 'toast-message',
-          duration: 10000,
-          style: {
-            background: '#363636',
-            color: '#fff',
-          },
-        }} />
-    </div>
+    <>
+      <nav class="bg-gray-200 text-gray-900 px-4">
+        <ul class="flex items-center">
+          <li class="py-2 px-4">
+            <A href="/" class="no-underline hover:underline">
+              Home
+            </A>
+          </li>
+          <li class="py-2 px-4">
+            <A href="/about" class="no-underline hover:underline">
+              About
+            </A>
+          </li>
+          <li class="py-2 px-4">
+            <A href="/error" class="no-underline hover:underline">
+              Error
+            </A>
+          </li>
+
+          <li class="text-sm flex items-center space-x-1 ml-auto">
+            <span>URL:</span>
+            <input
+              class="w-75px p-1 bg-white text-sm rounded-lg"
+              type="text"
+              readOnly
+              value={location.pathname}
+            />
+          </li>
+        </ul>
+      </nav>
+
+      <main>
+        <Suspense>{props.children}</Suspense>
+      </main>
+    </>
   );
 };
 
