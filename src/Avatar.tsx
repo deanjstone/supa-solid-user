@@ -1,6 +1,7 @@
 import { Component, createEffect, createSignal, JSX } from 'solid-js'
 import { supabase } from './supabaseClient'
 import { v4 as uuidv4 } from 'uuid';
+import { toast } from 'solid-toast';
 
 interface Props {
   size: number
@@ -54,7 +55,7 @@ const Avatar: Component<Props> = (props) => {
       props.onUpload(event, filePath)
     } catch (error) {
       if (error instanceof Error) {
-        alert(error.message)
+        toast.error(error.message)
       }
     } finally {
       setUploading(false)

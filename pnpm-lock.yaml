@@ -14,6 +14,9 @@ dependencies:
   solid-js:
     specifier: ^1.9.3
     version: 1.9.4
+  solid-toast:
+    specifier: ^0.5.0
+    version: 0.5.0(solid-js@1.9.4)
   uuid:
     specifier: ^11.0.5
     version: 11.0.5
@@ -614,6 +617,14 @@ packages:
     dev: true
     optional: true
 
+  /@solidjs/router@0.15.3(solid-js@1.9.4):
+    resolution: {integrity: sha512-iEbW8UKok2Oio7o6Y4VTzLj+KFCmQPGEpm1fS3xixwFBdclFVBvaQVeibl1jys4cujfAK5Kn6+uG2uBm3lxOMw==}
+    peerDependencies:
+      solid-js: ^1.8.6
+    dependencies:
+      solid-js: 1.9.4
+    dev: false
+
   /@supabase/auth-js@2.67.3:
     resolution: {integrity: sha512-NJDaW8yXs49xMvWVOkSIr8j46jf+tYHV0wHhrwOaLLMZSFO4g6kKAf+MfzQ2RaD06OCUkUHIzctLAxjTgEVpzw==}
     dependencies:
@@ -978,6 +989,14 @@ packages:
     transitivePeerDependencies:
       - supports-color
     dev: true
+
+  /solid-toast@0.5.0(solid-js@1.9.4):
+    resolution: {integrity: sha512-t770JakjyS2P9b8Qa1zMLOD51KYKWXbTAyJePVUoYex5c5FH5S/HtUBUbZAWFcqRCKmAE8KhyIiCvDZA8bOnxQ==}
+    peerDependencies:
+      solid-js: ^1.5.4
+    dependencies:
+      solid-js: 1.9.4
+    dev: false
 
   /source-map-js@1.2.1:
     resolution: {integrity: sha512-UXWMKhLOwVKb728IUtQPXxfYU+usdybtUrK/8uGE8CQMvrhOpwvzDBwj0QhSL7MQc7vIsISBG8VQ8+IDQxpfQA==}

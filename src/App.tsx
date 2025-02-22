@@ -4,6 +4,7 @@ import { AuthSession } from '@supabase/supabase-js';
 import Account from './Account';
 import Auth from './Auth';
 import Dashboard from './Dashboard';
+import { Toaster } from 'solid-toast';
 
 const App: Component = () => {
   const [session, setSession] = createSignal<AuthSession | null>(null);
@@ -28,6 +29,20 @@ const App: Component = () => {
       {session() && showAccount() && (
         <button onClick={() => setShowAccount(false)}>Go to Dashboard</button>
       )}
+      <Toaster position="top-center"
+        // Spacing between each toast in pixels
+        gutter={8}
+        containerClassName=""
+        containerStyle={{}}
+        toastOptions={{
+          // Define default options that each toast will inherit. Will be overwritten by individual toast options
+          className: 'toast-message',
+          duration: 10000,
+          style: {
+            background: '#363636',
+            color: '#fff',
+          },
+        }} />
     </div>
   );
 };

@@ -2,6 +2,7 @@ import { AuthSession } from '@supabase/supabase-js'
 import { Component, createEffect, createSignal } from 'solid-js'
 import { supabase } from './supabaseClient'
 import Avatar from './Avatar'
+import { toast } from 'solid-toast'
 
 interface Props {
   session: AuthSession
@@ -39,7 +40,7 @@ const Account: Component<Props> = ({ session }) => {
       }
     } catch (error) {
       if (error instanceof Error) {
-        alert(error.message)
+        toast.error(error.message)
       }
     } finally {
       setLoading(false)
@@ -68,7 +69,7 @@ const Account: Component<Props> = ({ session }) => {
       }
     } catch (error) {
       if (error instanceof Error) {
-        alert(error.message)
+        toast.error(error.message)
       }
     } finally {
       setLoading(false)

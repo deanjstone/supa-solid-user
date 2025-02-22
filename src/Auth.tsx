@@ -1,5 +1,6 @@
 import { createSignal } from 'solid-js'
 import { supabase } from './supabaseClient'
+import { toast } from 'solid-toast'
 
 export default function Auth() {
   const [loading, setLoading] = createSignal(false)
@@ -16,10 +17,12 @@ export default function Auth() {
       })
       if (error) throw error
       setShowTokenInput(true)
-      alert('Check your email for the verification code!')
+      // Replaced alert with toast
+      toast.success('Check your email for the verification code!')
     } catch (error) {
       if (error instanceof Error) {
-        alert(error.message)
+        // Replaced alert with toast
+        toast.error(error.message)
       }
     } finally {
       setLoading(false)
@@ -38,7 +41,8 @@ export default function Auth() {
       if (error) throw error
     } catch (error) {
       if (error instanceof Error) {
-        alert(error.message)
+        // Replaced alert with toast
+        toast.error(error.message)
       }
     } finally {
       setLoading(false)
