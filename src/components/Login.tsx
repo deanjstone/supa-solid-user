@@ -3,6 +3,21 @@ import { useNavigate } from "@solidjs/router";
 import { useSupabaseAuth } from "solid-supabase";
 import { toast } from "solid-toast";
 
+import { Button } from "~/components/ui/button";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardFooter,
+  CardHeader,
+  CardTitle,
+} from "~/components/ui/card";
+import {
+  TextField,
+  TextFieldInput,
+  TextFieldLabel,
+} from "~/components/ui/text-field";
+
 const Login = () => {
   const [loading, setLoading] = createSignal(false);
   const [email, setEmail] = createSignal("");
@@ -80,28 +95,28 @@ const Login = () => {
   };
 
   return (
-    // <div class="flex mt-20 items-center justify-center">
-    //   <div class="flex flex-col border p-4 rounded-lg shadow-lg w-64">
-    //     <h1 class="text-2xl">Login.</h1>
-    //     {loading() ? (
-    //       <div class="text-center">Sending magic link...</div>
-    //     ) : (
-    //       <>
-    //         <input
-    //           id="email"
-    //           class="mt-2 border p-2 rounded-sm"
-    //           type="email"
-    //           placeholder="Your email"
-    //           value={email()}
-    //           onChange={(e) => setEmail(e.target.value)}></input>
-    //         <Button onClick={handleLogin} classes="">
-    //           Send Magic Link
-    //         </Button>
-    //       </>
-    //     )}
-    //   </div>
-    // </div>
     <div class="flex mt-20 items-center justify-center">
+      <Card>
+        <CardHeader class="space-y-1">
+          <CardTitle class="text-2xl">Supa Solid User</CardTitle>
+          <CardDescription>Supabase + SolidJS</CardDescription>
+        </CardHeader>
+        <CardContent class="grid gap-4">
+          <p class="text-sm text-gray-500">Sign in with your email below</p>
+          <TextField class="grid gap-2">
+            <TextFieldLabel>Email</TextFieldLabel>
+            <TextFieldInput type="email" placeholder="email@domain.com" />
+          </TextField>
+        </CardContent>
+        <CardFooter>
+          <div class="grid grid-cols-2 gap-6">
+            <Button variant="outline" class="w-full">
+              Cancel
+            </Button>
+            <Button class="w-full">Create account</Button>
+          </div>
+        </CardFooter>
+      </Card>
       <div
         class="flex flex-col border p-4 rounded-lg shadow-lg w-64"
         aria-live="polite">
