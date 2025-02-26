@@ -4,6 +4,21 @@ import { useSupabase, useSupabaseAuth } from "solid-supabase";
 import { toast } from "solid-toast";
 
 import Avatar from "../components/Avatar";
+import { Button } from "~/components/ui/button";
+import { IconSend } from "~/components/ui/icons";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardFooter,
+  CardHeader,
+  CardTitle,
+} from "~/components/ui/card";
+import {
+  TextField,
+  TextFieldInput,
+  TextFieldLabel,
+} from "~/components/ui/text-field";
 
 const Profile = () => {
   const [loading, setLoading] = createSignal(true);
