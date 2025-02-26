@@ -4,7 +4,7 @@ import { useSupabaseAuth } from "solid-supabase";
 import { toast } from "solid-toast";
 
 import { Button } from "~/components/ui/button";
-import { IconSend } from "./ui/icons";
+import { IconSend } from "~/components/ui/icons";
 import {
   Card,
   CardContent,
