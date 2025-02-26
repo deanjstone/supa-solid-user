@@ -1,58 +1,58 @@
-import { AuthSession } from '@supabase/supabase-js'
-import { Component, createEffect, createSignal } from 'solid-js'
-import { supabase } from './supabaseClient'
-import Avatar from './Avatar'
-import { toast } from 'solid-toast'
+import { AuthSession } from "@supabase/supabase-js";
+import { Component, createEffect, createSignal } from "solid-js";
+import { supabase } from "./supabaseClient";
+import Avatar from "./components/Avatar";
+import { toast } from "solid-toast";
 
 interface Props {
-  session: AuthSession
+  session: AuthSession;
 }
 
 const Account: Component<Props> = ({ session }) => {
-  const [loading, setLoading] = createSignal(true)
-  const [username, setUsername] = createSignal<string | null>(null)
-  const [website, setWebsite] = createSignal<string | null>(null)
-  const [avatarUrl, setAvatarUrl] = createSignal<string | null>(null)
+  const [loading, setLoading] = createSignal(true);
+  const [username, setUsername] = createSignal<string | null>(null);
+  const [website, setWebsite] = createSignal<string | null>(null);
+  const [avatarUrl, setAvatarUrl] = createSignal<string | null>(null);
 
   createEffect(() => {
-    getProfile()
-  })
+    getProfile();
+  });
 
   const getProfile = async () => {
     try {
-      setLoading(true)
-      const { user } = session
+      setLoading(true);
+      const { user } = session;
 
       const { data, error, status } = await supabase
-        .from('profiles')
+        .from("profiles")
         .select(`username, website, avatar_url`)
-        .eq('id', user.id)
-        .single()
+        .eq("id", user.id)
+        .single();
 
       if (error && status !== 406) {
-        throw error
+        throw error;
       }
 
       if (data) {
-        setUsername(data.username)
-        setWebsite(data.website)
-        setAvatarUrl(data.avatar_url)
+        setUsername(data.username);
+        setWebsite(data.website);
+        setAvatarUrl(data.avatar_url);
       }
     } catch (error) {
       if (error instanceof Error) {
-        toast.error(error.message)
+        toast.error(error.message);
       }
     } finally {
-      setLoading(false)
+      setLoading(false);
     }
-  }
+  };
 
   const updateProfile = async (e: Event) => {
-    e.preventDefault()
+    e.preventDefault();
 
     try {
-      setLoading(true)
-      const { user } = session
+      setLoading(true);
+      const { user } = session;
 
       const updates = {
         id: user.id,
@@ -60,21 +60,21 @@ const Account: Component<Props> = ({ session }) => {
         website: website(),
         avatar_url: avatarUrl(),
         updated_at: new Date().toISOString(),
-      }
+      };
 
-      const { error } = await supabase.from('profiles').upsert(updates)
+      const { error } = await supabase.from("profiles").upsert(updates);
 
       if (error) {
-        throw error
+        throw error;
       }
     } catch (error) {
       if (error instanceof Error) {
-        toast.error(error.message)
+        toast.error(error.message);
       }
     } finally {
-      setLoading(false)
+      setLoading(false);
     }
-  }
+  };
 
   return (
     <div aria-live="polite">
@@ -83,8 +83,8 @@ const Account: Component<Props> = ({ session }) => {
           url={avatarUrl()}
           size={150}
           onUpload={(e: Event, url: string) => {
-            setAvatarUrl(url)
-            updateProfile(e)
+            setAvatarUrl(url);
+            updateProfile(e);
           }}
         />
         <div>
@@ -96,7 +96,7 @@ const Account: Component<Props> = ({ session }) => {
           <input
             id="username"
             type="text"
-            value={username() || ''}
+            value={username() || ""}
             onChange={(e) => setUsername(e.currentTarget.value)}
           />
         </div>
@@ -105,21 +105,27 @@ const Account: Component<Props> = ({ session }) => {
           <input
             id="website"
             type="text"
-            value={website() || ''}
+            value={website() || ""}
             onChange={(e) => setWebsite(e.currentTarget.value)}
           />
         </div>
         <div>
-          <button type="submit" class="button primary block" disabled={loading()}>
-            {loading() ? 'Saving ...' : 'Update profile'}
+          <button
+            type="submit"
+            class="button primary block"
+            disabled={loading()}>
+            {loading() ? "Saving ..." : "Update profile"}
           </button>
         </div>
-        <button type="button" class="button block" onClick={() => supabase.auth.signOut()}>
+        <button
+          type="button"
+          class="button block"
+          onClick={() => supabase.auth.signOut()}>
           Sign Out
         </button>
       </form>
     </div>
-  )
-}
+  );
+};
 
-export default Account
+export default Account;
