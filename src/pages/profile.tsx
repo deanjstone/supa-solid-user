@@ -19,7 +19,9 @@ const Profile = () => {
   const session = supaAuth.getSession();
 
   const loadUser = async () => {
-    const { data: { user: userData } } = await auth.getUser();
+    const {
+      data: { user: userData },
+    } = await auth.getUser();
     setUser(userData);
   };
 
