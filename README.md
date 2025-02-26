@@ -32,3 +32,11 @@ Your app is ready to be deployed!
 ## Deployment
 
 You can deploy the `dist` folder to any static host provider (netlify, surge, now, etc.)
+
+## Dependencies
+
+|  |  |  |
+| --- | --- | --- |
+| [`solid-supabase`](node_modules\solid-supabase\README.md) | A simple wrapper around Supabase.js to enable usage within Solid. | `solid-supabase^0.5.0` |
+| [`solid-toast`](node_modules\solid-toast\README.md) | Create beautiful, customizable toasts in SolidJS. | `solid-toast^0.5.0` |
+| [`uuid`](node_modules\uuid\README.md) | For the creation of RFC9562 UUIDs | `uuid^11.1.0` |
