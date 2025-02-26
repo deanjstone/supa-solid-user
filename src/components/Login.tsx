@@ -4,6 +4,7 @@ import { useSupabaseAuth } from "solid-supabase";
 import { toast } from "solid-toast";
 
 import { Button } from "~/components/ui/button";
+import { IconSend } from "./ui/icons";
 import {
   Card,
   CardContent,
@@ -96,28 +97,93 @@ const Login = () => {
 
   return (
     <div class="flex mt-20 items-center justify-center">
-      <Card>
+      <Card class="shadow-lg">
         <CardHeader class="space-y-1">
           <CardTitle class="text-2xl">Supa Solid User</CardTitle>
           <CardDescription>Supabase + SolidJS</CardDescription>
         </CardHeader>
-        <CardContent class="grid gap-4">
-          <p class="text-sm text-gray-500">Sign in with your email below</p>
-          <TextField class="grid gap-2">
-            <TextFieldLabel>Email</TextFieldLabel>
-            <TextFieldInput type="email" placeholder="email@domain.com" />
-          </TextField>
-        </CardContent>
-        <CardFooter>
-          <div class="grid grid-cols-2 gap-6">
-            <Button variant="outline" class="w-full">
-              Cancel
-            </Button>
-            <Button class="w-full">Create account</Button>
-          </div>
-        </CardFooter>
+        {!showTokenInput() ? (
+          <form onSubmit={handleSendToken}>
+            <CardContent class="grid gap-4">
+              <p class="text-sm text-gray-500">Sign in with your email below</p>
+              <TextField class="grid gap-2">
+                <TextFieldLabel>Email</TextFieldLabel>
+                <TextFieldInput
+                  id="email"
+                  type="email"
+                  placeholder="email@domain.com"
+                  value={email()}
+                  onChange={(e) => setEmail(e.currentTarget.value)}
+                />
+              </TextField>
+            </CardContent>
+            <CardFooter class="grid grid-cols-2 gap-6">
+              <Button
+                variant="outline"
+                class="w-full"
+                onClick={() => {
+                  setEmail("");
+                  setShowTokenInput(false);
+                }}>
+                Cancel
+              </Button>
+              <Button
+                class="w-full transition-all duration-200 hover:scale-105"
+                type="submit">
+                {loading() ? (
+                  <span>Loading...</span>
+                ) : (
+                  <span class="flex">
+                    <IconSend class="mr-2" /> Send code
+                  </span>
+                )}
+              </Button>
+            </CardFooter>
+          </form>
+        ) : (
+          <form onSubmit={handleVerifyToken}>
+            <CardContent class="grid gap-4">
+              <p class="text-sm text-gray-500">
+                Enter the verification code sent to your email
+              </p>
+              <TextField class="grid gap-2">
+                <TextFieldLabel>Verification Code</TextFieldLabel>
+                <TextFieldInput
+                  id="token"
+                  class="mt-2 border p-2 rounded-sm"
+                  type="text"
+                  placeholder="6-digit code"
+                  value={token()}
+                  onChange={(e) => setToken(e.currentTarget.value)}
+                  maxLength={6}
+                  pattern="[0-9]{6}"
+                />
+              </TextField>
+            </CardContent>
+            <CardFooter class="grid grid-cols-2 gap-6">
+              <Button
+                variant="outline"
+                class="w-full"
+                onClick={() => {
+                  setEmail("");
+                  setShowTokenInput(false);
+                }}>
+                Cancel
+              </Button>
+              <Button
+                class="w-28 transition-all duration-200 hover:scale-105"
+                type="submit">
+                {loading() ? (
+                  <span>Verifying...</span>
+                ) : (
+                  <span>Verify code</span>
+                )}
+              </Button>
+            </CardFooter>
+          </form>
+        )}
       </Card>
-      <div
+      {/* <div
         class="flex flex-col border p-4 rounded-lg shadow-lg w-64"
         aria-live="polite">
         <h1 class="text-2xl">Supabase + SolidJS</h1>
@@ -129,7 +195,7 @@ const Login = () => {
               onSubmit={handleSendToken}>
               <div>
                 <input
-                  id="email"
+                  // id="email"
                   class="mt-2 border p-2 rounded-sm"
                   type="email"
                   placeholder="email@domain.com"
@@ -194,7 +260,7 @@ const Login = () => {
             </form>
           </>
         )}
-      </div>
+      </div> */}
     </div>
   );
 };
