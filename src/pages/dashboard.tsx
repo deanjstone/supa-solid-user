@@ -2,7 +2,7 @@ import { createSignal, createEffect } from "solid-js";
 import { useNavigate } from "@solidjs/router";
 import { useSupabase } from "solid-supabase";
 
-import { Button } from "~/components/ui/button";
+// import { Button } from "./components/ui/button";
 
 const Dashboard = () => {
   // not needed, left as reference
@@ -36,17 +36,17 @@ const Dashboard = () => {
       <div class="w-full">
         <div class="flex items-center justify-between">
           <h1 class="text-2xl">Dashboard</h1>
-          <Button onClick={() => navigate("/profile")} class="bg-blue-500">
+          <button onClick={() => navigate("/profile")} class="bg-blue-500">
             Profile
-          </Button>
-          <Button
+          </button>
+          <button
             onClick={() => {
               supabase.auth.signOut();
               navigate("/");
             }}
             class="bg-red-400">
             Sign Out
-          </Button>
+          </button>
         </div>
         {/* {notes().length
           ? notes().map(({ id, title, description }) => (

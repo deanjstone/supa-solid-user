@@ -3,8 +3,6 @@ import { useNavigate } from "@solidjs/router";
 import { useSupabaseAuth } from "solid-supabase";
 import { toast } from "solid-toast";
 
-import { Button } from "~/components/ui/button";
-
 const Login = () => {
   const [loading, setLoading] = createSignal(false);
   const [email, setEmail] = createSignal("");
@@ -170,14 +168,13 @@ const Login = () => {
                     <span>Verify code</span>
                   )}
                 </button>
-                <Button
-                  variant="outline"
+                <button
                   onClick={() => {
                     setEmail("");
                     setShowTokenInput(false);
                   }}>
                   Cancel
-                </Button>
+                </button>
               </div>
             </form>
           </>
