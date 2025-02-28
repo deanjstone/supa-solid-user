@@ -30,31 +30,27 @@ const Profile = () => {
   const navigate = useNavigate();
   const supabase = useSupabase();
   const auth = useSupabaseAuth();
-  const supaAuth = useSupabaseAuth();
-  const session = supaAuth.getSession();
 
-  const loadUser = async () => {
-    const {
-      data: { user: userData },
-    } = await auth.getUser();
-    setUser(userData);
-  };
-
-  loadUser();
-
-  createEffect(() => {
-    getProfile(session);
-  });
-
-  const getProfile = async (user) => {
+  createEffect(async () => {
     try {
-      setLoading(true);
-      // const { user } = auth.getUser();
+      // Get the authenticated user data
+      const {
+        data: { user: userData },
+      } = await supabase.auth.getUser();
 
+      if (!userData) {
+        navigate("/login");
+        return;
+      }
+
+      setUser(userData);
+
+      // Now fetch the profile data using the user ID
+      setLoading(true);
       const { data, error, status } = await supabase
         .from("profiles")
         .select(`username, website, avatar_url`)
-        .eq("id", user.id)
+        .eq("id", userData.id)
         .single();
 
       if (error && status !== 406) {
@@ -73,20 +69,21 @@ const Profile = () => {
     } finally {
       setLoading(false);
     }
-  };
+  });
 
   const updateProfile = async (e: Event) => {
     e.preventDefault();
 
     try {
       setLoading(true);
-      // const { user } = session;
-      const {
-        data: { user },
-      } = await supabase.auth.getUser();
+      const currentUser = user();
+
+      if (!currentUser) {
+        throw new Error("No user logged in");
+      }
 
       const updates = {
-        id: user.id,
+        id: currentUser.id,
         username: username(),
         website: website(),
         avatar_url: avatarUrl(),
@@ -98,6 +95,8 @@ const Profile = () => {
       if (error) {
         throw error;
       }
+
+      toast.success("Profile updated successfully!");
     } catch (error) {
       if (error instanceof Error) {
         toast.error(error.message);
