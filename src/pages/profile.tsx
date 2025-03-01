@@ -110,26 +110,28 @@ const Profile = () => {
   };
 
   return (
-    <div class="container mx-auto px-4 py-8 max-w-md">
-      <Card>
-        <CardHeader class="relative">
-          <Button
-            variant="outline"
-            size="icon"
-            class="absolute top-4 left-4"
-            onClick={() => navigate("/dashboard")}>
-            <IconHome />
-            <span class="sr-only">Back to dashboard</span>
-          </Button>
-          <SignOut
-            size="icon"
-            class="absolute top-4 right-4"
-            showText={false}
-          />
-          <CardTitle class="text-2xl font-bold text-center">
+    <div class="flex min-h-screen items-center justify-center px-4 py-8 sm:py-12">
+      <Card class="w-full max-w-md">
+        <CardHeader class="relative pb-6 pt-8">
+          <div class="flex justify-between">
+            <Button
+              variant="outline"
+              size="icon"
+              onClick={() => navigate("/dashboard")}
+              class="absolute left-4 top-4 size-10">
+              <IconHome class="size-5" />
+              <span class="sr-only">Back to dashboard</span>
+            </Button>
+            <SignOut
+              size="icon"
+              class="absolute right-4 top-4 size-10"
+              showText={false}
+            />
+          </div>
+          <CardTitle class="text-center text-2xl font-bold sm:text-3xl">
             User Profile
           </CardTitle>
-          <CardDescription class="text-center">
+          <CardDescription class="text-center px-6 mt-2">
             Manage your personal information and account settings
           </CardDescription>
         </CardHeader>
@@ -161,8 +163,8 @@ const Profile = () => {
             <TextField>
               <TextFieldLabel>Name</TextFieldLabel>
               <div class="relative">
-                <div class="absolute inset-y-0 left-3 flex items-center pointer-events-none text-gray-400">
-                  <IconUser />
+                <div class="absolute inset-y-0 left-3 flex items-center pointer-events-none text-muted-foreground">
+                  <IconUser class="size-4" />
                 </div>
                 <TextFieldInput
                   value={username() || ""}
@@ -176,8 +178,8 @@ const Profile = () => {
             <TextField>
               <TextFieldLabel>Website</TextFieldLabel>
               <div class="relative">
-                <div class="absolute inset-y-0 left-3 flex items-center pointer-events-none text-gray-400">
-                  <IconLink />
+                <div class="absolute inset-y-0 left-3 flex items-center pointer-events-none text-muted-foreground">
+                  <IconLink class="size-4" />
                 </div>
                 <TextFieldInput
                   value={website() || ""}
@@ -189,14 +191,14 @@ const Profile = () => {
             </TextField>
           </form>
         </CardContent>
-        <CardFooter class="flex justify-center">
+        <CardFooter class="flex flex-col sm:flex-row justify-center gap-4 pb-6 pt-2">
           <Button
             type="submit"
             onClick={updateProfile}
             disabled={loading()}
-            class="w-full sm:w-auto">
+            class="w-full">
             {loading() ? "Saving..." : "Update Profile"}
-            <IconSend />
+            <IconSend class="ml-2" />
           </Button>
         </CardFooter>
       </Card>

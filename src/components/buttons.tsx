@@ -21,8 +21,8 @@ export function SignOut(props: {
       onClick={() => {
         // supabase.auth.signOut();
       }}>
-      {showText && "Sign Out"}
-      <IconLogOut />
+      {showText !== false && <span class="hidden sm:inline">Sign Out</span>}
+      <IconLogOut class="size-4 sm:ml-2" />
       <span class="sr-only">Sign out</span>
     </Button>
   );

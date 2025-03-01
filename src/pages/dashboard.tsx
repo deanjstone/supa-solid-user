@@ -14,23 +14,33 @@ const Dashboard = () => {
   // createEffect(async () => {}, []);
 
   return (
-    <>
-      <div class="container flex-col mt-8">
-        <div class="flex items-center justify-center">
-          <h1 class="text-2xl w-full">Dashboard</h1>
-          <div class="w-full">
-            <div class="flex items-center justify-between">
-              <Button href="/profile" as={A} variant="outline">
-                Profile
-              </Button>
+    <div class="flex min-h-screen flex-col">
+      <div class="container flex-1 py-8">
+        <div class="mb-8">
+          <h1 class="text-2xl font-bold sm:text-3xl">Dashboard</h1>
+          <p class="mt-2 text-muted-foreground">
+            Manage your account and settings
+          </p>
+        </div>
 
-              <SignOut />
-            </div>
-          </div>
+        <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+          {/* Navigation cards can be added here */}
+        </div>
+
+        <div class="mt-8 flex flex-col sm:flex-row gap-4">
+          <Button
+            href="/profile"
+            as={A}
+            variant="outline"
+            class="w-full sm:w-auto">
+            Profile
+          </Button>
+
+          <SignOut class="w-full sm:w-auto" />
         </div>
       </div>
       <Footer />
-    </>
+    </div>
   );
 };
 
