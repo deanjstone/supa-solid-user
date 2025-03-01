@@ -3,18 +3,27 @@ import { Button } from "@ui/button";
 import { IconLogOut } from "@ui/icons";
 import { useSupabase } from "solid-supabase";
 
-export function SignOut() {
+export function SignOut(props: {
+  size?: "default" | "sm" | "lg" | "icon";
+  class?: string;
+  showText?: boolean;
+}) {
   const supabase = useSupabase();
+  const { size = "default", showText = true, class: className = "" } = props;
+
   return (
     <Button
-      variant="destructive"
+      variant="outline"
+      size={size}
       as={A}
       href="/signed-out"
+      class={className}
       onClick={() => {
-        supabase.auth.signOut();
+        // supabase.auth.signOut();
       }}>
-      Sign Out
+      {showText && "Sign Out"}
       <IconLogOut />
+      <span class="sr-only">Sign out</span>
     </Button>
   );
 }
