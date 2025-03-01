@@ -3,8 +3,8 @@ import { useNavigate } from "@solidjs/router";
 import { useSupabaseAuth } from "solid-supabase";
 import { toast } from "solid-toast";
 
-import { Button } from "~/components/ui/button";
-import { IconSend } from "~/components/ui/icons";
+import { Button } from "@ui/button";
+import { IconSend } from "@ui/icons";
 import {
   Card,
   CardContent,
@@ -12,13 +12,13 @@ import {
   CardFooter,
   CardHeader,
   CardTitle,
-} from "~/components/ui/card";
+} from "@ui/card";
 import {
   TextField,
   TextFieldInput,
   TextFieldLabel,
   TextFieldDescription,
-} from "~/components/ui/text-field";
+} from "@ui/text-field";
 
 const Login = () => {
   const [loading, setLoading] = createSignal(false);
