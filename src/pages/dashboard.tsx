@@ -3,6 +3,7 @@ import { useNavigate } from "@solidjs/router";
 import { useSupabase } from "solid-supabase";
 
 import { Button } from "~/components/ui/button";
+import { IconLogOut } from "~/components/ui/icons";
 
 const Dashboard = () => {
   const navigate = useNavigate();
@@ -18,13 +19,17 @@ const Dashboard = () => {
           <Button onClick={() => navigate("/profile")} class="bg-blue-500">
             Profile
           </Button>
+
           <Button
+            type="button"
+            variant="destructive"
+            class="w-full sm:w-auto"
             onClick={() => {
               supabase.auth.signOut();
               navigate("/");
-            }}
-            class="bg-red-400">
+            }}>
             Sign Out
+            <IconLogOut />
           </Button>
         </div>
       </div>
