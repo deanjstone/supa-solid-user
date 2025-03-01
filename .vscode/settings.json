@@ -1,0 +1,7 @@
+{
+  "github.copilot.chat.reviewSelection.instructions": [
+    {
+      "file": ".vscode/gh-copilot-commit-instructions.md"
+    }
+  ]
+}
