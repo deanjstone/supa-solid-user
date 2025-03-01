@@ -17,7 +17,7 @@ const App: Component = () => {
         <Route path="/dashboard" component={Dashboard} />
         <Route path="/profile" component={Profile} />
         <Route path="/about" component={About} />
-        <Route path="/*404" component={NotFound} />
+        <Route path="/**404" component={NotFound} />
       </Router>
       <Toaster />
     </>
