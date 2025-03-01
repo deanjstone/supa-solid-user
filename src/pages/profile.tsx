@@ -3,15 +3,7 @@ import { useNavigate } from "@solidjs/router";
 import { useSupabase, useSupabaseAuth } from "solid-supabase";
 import { toast } from "solid-toast";
 
-import Avatar from "../components/Avatar";
-import { Button } from "~/components/ui/button";
-import {
-  IconSend,
-  IconLogOut,
-  IconUser,
-  IconLink,
-  IconHome,
-} from "~/components/ui/icons";
+import { Button } from "@ui/button";
 import {
   Card,
   CardContent,
@@ -19,13 +11,17 @@ import {
   CardFooter,
   CardHeader,
   CardTitle,
-} from "~/components/ui/card";
+} from "@ui/card";
 import {
   TextField,
   TextFieldInput,
   TextFieldLabel,
   TextFieldDescription,
-} from "~/components/ui/text-field";
+} from "@ui/text-field";
+import { IconSend, IconUser, IconLink, IconHome } from "@ui/icons";
+
+import Avatar from "~/components/Avatar";
+import { SignOut } from "~/components/buttons";
 
 const Profile = () => {
   const [loading, setLoading] = createSignal(true);
@@ -198,17 +194,7 @@ const Profile = () => {
             <IconSend />
           </Button>
 
-          <Button
-            type="button"
-            variant="destructive"
-            class="w-full sm:w-auto"
-            onClick={() => {
-              supabase.auth.signOut();
-              navigate("/");
-            }}>
-            Sign Out
-            <IconLogOut />
-          </Button>
+          <SignOut />
         </CardFooter>
       </Card>
     </div>
