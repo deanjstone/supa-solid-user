@@ -9,9 +9,12 @@ import About from "./pages/about";
 import NotFound from "./pages/404";
 
 const App: Component = () => {
+  // Get the base path from the environment or default to '/'
+  const base = import.meta.env.BASE_URL || "/";
+
   return (
     <>
-      <Router>
+      <Router base={base}>
         <Route path="/login" component={Login} />
         <Route path="/" component={Login} />
         <Route path="/dashboard" component={Dashboard} />
