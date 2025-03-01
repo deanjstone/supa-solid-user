@@ -1,8 +1,24 @@
+import { A } from "@solidjs/router";
+
+import { Button } from "~/components/ui/button";
+import {
+  PageHeaderActions,
+  PageHeaderDescription,
+  PageHeaderHeading,
+} from "~/components/page-header";
+
 export default function NotFound() {
   return (
-    <section class="text-gray-700 p-8 text-center">
-      <h1 class="text-2xl font-bold">404: Not Found</h1>
-      <p class="mt-4">It's gone 😞</p>
-    </section>
+    <div class="flex min-h-screen flex-col items-center justify-center">
+      <PageHeaderHeading>Oops! Page not found.</PageHeaderHeading>
+      <PageHeaderDescription>
+        The page you're looking for doesn't exist or has been moved. 😞
+      </PageHeaderDescription>
+      <PageHeaderActions class="justify-center">
+        <Button as={A} href="/">
+          Go back home
+        </Button>
+      </PageHeaderActions>
+    </div>
   );
 }
