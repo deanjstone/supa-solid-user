@@ -1,8 +1,22 @@
+import { A } from "@solidjs/router";
+
+import { Button } from "@ui/button";
+import {
+  PageHeaderActions,
+  PageHeaderDescription,
+  PageHeaderHeading,
+} from "~/components/page-header";
+
 export default function About() {
   return (
-    <section class="text-gray-700 p-8">
-      <h1 class="text-2xl font-bold">About Page</h1>
-      <p class="mt-4">Nothing to seee here yet</p>
-    </section>
+    <div class="flex min-h-screen flex-col items-center gap-3">
+      <PageHeaderHeading>About Page</PageHeaderHeading>
+      <PageHeaderDescription>Nothing to see here yet. 😞</PageHeaderDescription>
+      <PageHeaderActions class="justify-center">
+        <Button as={A} href="/">
+          Go back home
+        </Button>
+      </PageHeaderActions>
+    </div>
   );
 }
