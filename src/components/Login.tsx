@@ -17,6 +17,7 @@ import {
   TextField,
   TextFieldInput,
   TextFieldLabel,
+  TextFieldDescription,
 } from "~/components/ui/text-field";
 
 const Login = () => {
@@ -146,6 +147,16 @@ const Login = () => {
               <p class="text-sm text-gray-500">
                 Enter the verification code sent to your email
               </p>
+
+              {/* Added email display field */}
+              <TextField class="grid gap-2">
+                <TextFieldLabel>Email</TextFieldLabel>
+                <TextFieldInput value={email()} disabled aria-readonly="true" />
+                {/* <TextFieldDescription>
+                  Verification code was sent to this email
+                </TextFieldDescription> */}
+              </TextField>
+
               <TextField class="grid gap-2">
                 <TextFieldLabel>Verification Code</TextFieldLabel>
                 <TextFieldInput
