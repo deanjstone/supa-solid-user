@@ -24,13 +24,13 @@ const Login = () => {
   const navigate = useNavigate();
   const supaAuth = useSupabaseAuth();
 
-  createEffect(() => {
-    supaAuth.getSession().then(({ data: { session } }) => {
-      if (session) {
-        navigate("/dashboard");
-      }
-    });
-  });
+  // createEffect(() => {
+  //   supaAuth.getSession().then(({ data: { session } }) => {
+  //     if (session) {
+  //       navigate("/dashboard");
+  //     }
+  //   });
+  // });
 
   const handleSendToken = async (e: SubmitEvent) => {
     e.preventDefault();
@@ -139,24 +139,13 @@ const Login = () => {
         ) : (
           <form onSubmit={handleVerifyToken}>
             <CardContent class="grid gap-4">
-              <p class="text-sm text-gray-500">
-                Enter the verification code sent to your email
-              </p>
-
-              {/* Added email display field */}
-              <TextField class="grid gap-2">
-                <TextFieldLabel>Email</TextFieldLabel>
-                <TextFieldInput value={email()} disabled aria-readonly="true" />
-                {/* <TextFieldDescription>
-                  Verification code was sent to this email
-                </TextFieldDescription> */}
-              </TextField>
-
+              <p>Enter the verification code sent to</p>
+              <p class="truncate font-medium">{email()}</p>
               <TextField class="grid gap-2">
                 <TextFieldLabel>Verification Code</TextFieldLabel>
                 <TextFieldInput
                   id="token"
-                  class="mt-2 border p-2 rounded-sm"
+                  class="mt-2 border p-2 rounded-sm bg-bg-000 border-border-200  hover:border-border-100  transition-colors  placeholder:text-text-500  focus:border-accent-secondary-100  focus-within:!border-accent-secondary-100  focus:ring-0  focus:outline-none  disabled:cursor-not-allowed  disabled:opacity-50 h-11 px-3 w-full text-center"
                   type="text"
                   placeholder="6-digit code"
                   value={token()}
@@ -189,84 +178,6 @@ const Login = () => {
           </form>
         )}
       </Card>
-      {/* <div
-        class="flex flex-col border p-4 rounded-lg shadow-lg w-64"
-        aria-live="polite">
-        <h1 class="text-2xl">Supabase + SolidJS</h1>
-        {!showTokenInput() ? (
-          <>
-            <p class="description">Sign in with your email below</p>
-            <form
-              class="mt-4 items-center justify-center"
-              onSubmit={handleSendToken}>
-              <div>
-                <input
-                  // id="email"
-                  class="mt-2 border p-2 rounded-sm"
-                  type="email"
-                  placeholder="email@domain.com"
-                  value={email()}
-                  onChange={(e) => setEmail(e.currentTarget.value)}
-                />
-              </div>
-              <div>
-                <button
-                  type="submit"
-                  class="mt-4 px-2 py-2 bg-black text-white rounded-lg transition-all duration-200 hover:scale-105"
-                  aria-live="polite">
-                  {loading() ? (
-                    <span>Loading</span>
-                  ) : (
-                    <span>Send verification code</span>
-                  )}
-                </button>
-              </div>
-            </form>
-          </>
-        ) : (
-          <>
-            <p class="description">
-              Enter the verification code sent to your email
-            </p>
-            <form
-              class="mt-4 items-center justify-center"
-              onSubmit={handleVerifyToken}>
-              <div>
-                <label for="token">Verification Code</label>
-                <input
-                  id="token"
-                  class="mt-2 border p-2 rounded-sm"
-                  type="text"
-                  placeholder="6-digit code"
-                  value={token()}
-                  onChange={(e) => setToken(e.currentTarget.value)}
-                  maxLength={6}
-                  pattern="[0-9]{6}"
-                />
-              </div>
-              <div class="flex items-center justify-between">
-                <button
-                  type="submit"
-                  class="mt-4 px-2 py-2 bg-black text-white rounded-lg transition-all duration-200 hover:scale-105"
-                  aria-live="polite">
-                  {loading() ? (
-                    <span>Verifying...</span>
-                  ) : (
-                    <span>Verify code</span>
-                  )}
-                </button>
-                <button
-                  onClick={() => {
-                    setEmail("");
-                    setShowTokenInput(false);
-                  }}>
-                  Cancel
-                </button>
-              </div>
-            </form>
-          </>
-        )}
-      </div> */}
     </div>
   );
 };
