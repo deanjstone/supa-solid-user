@@ -9,14 +9,18 @@ import {
 
 export default function About() {
   return (
-    <div class="flex min-h-screen flex-col items-center gap-3">
-      <PageHeaderHeading>About Page</PageHeaderHeading>
-      <PageHeaderDescription>Nothing to see here yet. 😞</PageHeaderDescription>
-      <PageHeaderActions class="justify-center">
-        <Button as={A} href="/">
-          Go back home
-        </Button>
-      </PageHeaderActions>
-    </div>
+    <>
+      <div class="flex min-h-screen flex-col items-center gap-3">
+        <PageHeaderHeading>About Page</PageHeaderHeading>
+        <PageHeaderDescription>
+          Nothing to see here yet. 😞
+        </PageHeaderDescription>
+        <PageHeaderActions class="justify-center">
+          <Button as={A} href="/">
+            Go back home
+          </Button>
+        </PageHeaderActions>
+      </div>
+    </>
   );
 }
