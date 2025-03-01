@@ -114,13 +114,18 @@ const Profile = () => {
       <Card>
         <CardHeader class="relative">
           <Button
-            variant="ghost"
+            variant="outline"
             size="icon"
             class="absolute top-4 left-4"
             onClick={() => navigate("/dashboard")}>
             <IconHome />
             <span class="sr-only">Back to dashboard</span>
           </Button>
+          <SignOut
+            size="icon"
+            class="absolute top-4 right-4"
+            showText={false}
+          />
           <CardTitle class="text-2xl font-bold text-center">
             User Profile
           </CardTitle>
@@ -184,7 +189,7 @@ const Profile = () => {
             </TextField>
           </form>
         </CardContent>
-        <CardFooter class="flex flex-col gap-3 sm:flex-row sm:justify-between">
+        <CardFooter class="flex justify-center">
           <Button
             type="submit"
             onClick={updateProfile}
@@ -193,8 +198,6 @@ const Profile = () => {
             {loading() ? "Saving..." : "Update Profile"}
             <IconSend />
           </Button>
-
-          <SignOut />
         </CardFooter>
       </Card>
     </div>
