@@ -12,7 +12,7 @@
   "license": "MIT",
   "devDependencies": {
     "@kobalte/core": "^0.13.9",
-    "@types/node": "^22.13.5",
+    "@types/node": "^22.13.8",
     "autoprefixer": "^10.4.20",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
@@ -20,13 +20,17 @@
     "tailwind-merge": "^3.0.2",
     "tailwindcss": "^3.4.17",
     "tailwindcss-animate": "^1.0.7",
-    "typescript": "^5.7.3",
-    "vite": "^6.1.1",
-    "vite-plugin-solid": "^2.11.2"
+    "typescript": "^5.8.2",
+    "vite": "^6.2.0",
+    "vite-plugin-solid": "^2.11.6"
   },
   "dependencies": {
+    "@ark-ui/solid": "^4.10.2",
+    "@solid-primitives/refs": "^1.1.0",
     "@solidjs/router": "^0.15.3",
-    "@supabase/supabase-js": "^2.48.1",
+    "@supabase/supabase-js": "^2.49.1",
+    "chart.js": "^4.4.8",
+    "cmdk-solid": "^1.1.2",
     "solid-js": "^1.9.5",
     "solid-supabase": "^0.5.0",
     "solid-toast": "^0.5.0",
