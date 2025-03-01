@@ -74,23 +74,6 @@ const Login = () => {
     }
   };
 
-  const handleLogin = async (e) => {
-    e.preventDefault();
-    try {
-      setLoading(true);
-      const { error } = await supaAuth.signInWithOtp({ email: email() });
-      if (error) {
-        throw error;
-      }
-      alert("Chek your email to verify your account");
-    } catch (error) {
-      console.error(error);
-      alert(error.message);
-    } finally {
-      setLoading(false);
-    }
-  };
-
   return (
     <div class="flex mt-20 items-center justify-center">
       <Card class="shadow-lg">
