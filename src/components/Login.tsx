@@ -24,13 +24,13 @@ const Login = () => {
   const navigate = useNavigate();
   const supaAuth = useSupabaseAuth();
 
-  // createEffect(() => {
-  //   supaAuth.getSession().then(({ data: { session } }) => {
-  //     if (session) {
-  //       navigate("/dashboard");
-  //     }
-  //   });
-  // });
+  createEffect(() => {
+    supaAuth.getSession().then(({ data: { session } }) => {
+      if (session) {
+        navigate("/dashboard");
+      }
+    });
+  });
 
   const handleSendToken = async (e: SubmitEvent) => {
     e.preventDefault();
@@ -134,12 +134,11 @@ const Login = () => {
               </p>
               <p class="truncate font-medium text-center">{email()}</p>
               <TextField class="grid gap-2">
-                {/* <TextFieldLabel>Verification Code</TextFieldLabel> */}
                 <TextFieldInput
                   id="token"
                   class="text-center text-lg tracking-wide"
                   type="text"
-                  placeholder="Enter verification code"
+                  placeholder="Verification code"
                   value={token()}
                   onChange={(e) => setToken(e.currentTarget.value)}
                   maxLength={6}

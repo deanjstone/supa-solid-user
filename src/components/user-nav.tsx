@@ -1,3 +1,7 @@
+import { A } from "@solidjs/router";
+import { createResource } from "solid-js";
+import { useSupabase } from "solid-supabase";
+
 import { Avatar, AvatarFallback, AvatarImage } from "@ui/avatar";
 import { Button } from "@ui/button";
 import {
@@ -7,11 +11,44 @@ import {
   DropdownMenuItem,
   DropdownMenuLabel,
   DropdownMenuSeparator,
-  DropdownMenuShortcut,
   DropdownMenuTrigger,
 } from "@ui/dropdown-menu";
+import { IconSettings, IconUser } from "@ui/icons";
 
 export function UserNav() {
+  const supabase = useSupabase();
+
+  const [userDetails] = createResource(async () => {
+    const {
+      data: { user },
+    } = await supabase.auth.getUser();
+    if (!user) return null;
+
+    // Get profile data (username, avatar) from profiles table
+    const { data: profile } = await supabase
+      .from("profiles")
+      .select("username, avatar_url")
+      .eq("id", user.id)
+      .single();
+
+    return {
+      email: user.email,
+      name: profile?.username || user.email?.split("@")[0] || "User",
+      avatar: profile?.avatar_url,
+    };
+  });
+
+  const handleSignOut = async () => {
+    await supabase.auth.signOut();
+    window.location.href = "/login";
+  };
+
+  // Get initials from name or email
+  const getInitials = () => {
+    const name = userDetails()?.name || "";
+    return name.substring(0, 2).toUpperCase();
+  };
+
   return (
     <DropdownMenu placement="bottom-end">
       <DropdownMenuTrigger
@@ -19,40 +56,37 @@ export function UserNav() {
         variant="ghost"
         class="relative size-8 rounded-full">
         <Avatar class="size-9">
-          <AvatarImage src="/avatars/03.png" alt="@shadcn" />
-          <AvatarFallback>SC</AvatarFallback>
+          <AvatarImage
+            src={userDetails()?.avatar || ""}
+            alt={userDetails()?.name || ""}
+          />
+          <AvatarFallback>{getInitials()}</AvatarFallback>
         </Avatar>
       </DropdownMenuTrigger>
       <DropdownMenuContent class="w-56">
         <DropdownMenuLabel class="font-normal">
           <div class="flex flex-col space-y-1">
-            <p class="text-sm font-medium leading-none">shadcn</p>
+            <p class="text-sm font-medium leading-none">
+              {userDetails()?.name}
+            </p>
             <p class="text-xs leading-none text-muted-foreground">
-              m@example.com
+              {userDetails()?.email}
             </p>
           </div>
         </DropdownMenuLabel>
         <DropdownMenuSeparator />
         <DropdownMenuGroup>
-          <DropdownMenuItem>
+          <DropdownMenuItem as={A} href="/profile">
+            <IconUser class="mr-2 size-4" />
             Profile
-            <DropdownMenuShortcut>⇧⌘P</DropdownMenuShortcut>
           </DropdownMenuItem>
-          <DropdownMenuItem>
-            Billing
-            <DropdownMenuShortcut>⌘B</DropdownMenuShortcut>
-          </DropdownMenuItem>
-          <DropdownMenuItem>
+          <DropdownMenuItem as={A} href="/settings">
+            <IconSettings class="mr-2 size-4" />
             Settings
-            <DropdownMenuShortcut>⌘S</DropdownMenuShortcut>
           </DropdownMenuItem>
-          <DropdownMenuItem>New Team</DropdownMenuItem>
         </DropdownMenuGroup>
         <DropdownMenuSeparator />
-        <DropdownMenuItem>
-          Log out
-          <DropdownMenuShortcut>⇧⌘Q</DropdownMenuShortcut>
-        </DropdownMenuItem>
+        <DropdownMenuItem onSelect={handleSignOut}>Log out</DropdownMenuItem>
       </DropdownMenuContent>
     </DropdownMenu>
   );
