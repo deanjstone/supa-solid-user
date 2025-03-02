@@ -20,7 +20,7 @@ import {
 } from "@ui/text-field";
 import { IconSend, IconUser, IconLink } from "@ui/icons";
 
-import Avatar from "~/components/Avatar";
+import Avatar from "~/components/avatar-upload";
 
 const Profile = () => {
   const [loading, setLoading] = createSignal(true);
