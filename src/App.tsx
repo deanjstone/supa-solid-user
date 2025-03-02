@@ -2,12 +2,12 @@ import { Component } from "solid-js";
 import { Router, Route } from "@solidjs/router";
 import { Toaster } from "solid-toast";
 
-import { AuthLayout } from "./components/auth-layout";
-import Login from "./components/login";
-import Dashboard from "./pages/dashboard";
-import Profile from "./pages/profile";
-import About from "./pages/about";
-import NotFound from "./pages/404";
+import { AuthLayout } from "~/components/auth-layout";
+import Login from "~/components/login";
+import Dashboard from "~/pages/dashboard";
+import Profile from "~/pages/profile";
+import About from "~/pages/about";
+import NotFound from "~/pages/404";
 
 const App: Component = () => {
   // Get the base path from the environment or default to '/'
