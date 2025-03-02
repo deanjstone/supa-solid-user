@@ -1,6 +1,6 @@
 import { createEffect, createSignal } from "solid-js";
 import { useNavigate } from "@solidjs/router";
-import { useSupabase, useSupabaseAuth } from "solid-supabase";
+import { useSupabase } from "solid-supabase";
 import { toast } from "solid-toast";
 
 import { Button } from "@ui/button";
@@ -18,10 +18,9 @@ import {
   TextFieldLabel,
   TextFieldDescription,
 } from "@ui/text-field";
-import { IconSend, IconUser, IconLink, IconHome } from "@ui/icons";
+import { IconSend, IconUser, IconLink } from "@ui/icons";
 
 import Avatar from "~/components/Avatar";
-import { SignOut } from "~/components/buttons";
 
 const Profile = () => {
   const [loading, setLoading] = createSignal(true);
@@ -32,7 +31,6 @@ const Profile = () => {
 
   const navigate = useNavigate();
   const supabase = useSupabase();
-  const auth = useSupabaseAuth();
 
   createEffect(async () => {
     try {
@@ -110,34 +108,20 @@ const Profile = () => {
   };
 
   return (
-    <div class="flex min-h-screen items-center justify-center px-4 py-8 sm:py-12">
+    // <div class="flex items-center justify-center px-4 py-6 sm:py-8">
+    <div class="flex container items-center justify-center px-4 py-6">
       <Card class="w-full max-w-md">
-        <CardHeader class="relative pb-6 pt-8">
-          <div class="flex justify-between">
-            <Button
-              variant="outline"
-              size="icon"
-              onClick={() => navigate("/dashboard")}
-              class="absolute left-4 top-4 size-10">
-              <IconHome class="size-5" />
-              <span class="sr-only">Back to dashboard</span>
-            </Button>
-            <SignOut
-              size="icon"
-              class="absolute right-4 top-4 size-10"
-              showText={false}
-            />
-          </div>
+        <CardHeader class="pb-4 pt-6">
           <CardTitle class="text-center text-2xl font-bold sm:text-3xl">
             User Profile
           </CardTitle>
-          <CardDescription class="text-center px-6 mt-2">
+          <CardDescription class="text-center px-6 mt-1">
             Manage your personal information and account settings
           </CardDescription>
         </CardHeader>
-        <CardContent>
-          <form onSubmit={updateProfile} class="space-y-6">
-            <div class="flex justify-center mb-6">
+        <CardContent class="pb-2">
+          <form onSubmit={updateProfile} class="space-y-4">
+            <div class="flex justify-center mb-4">
               <Avatar
                 url={avatarUrl()}
                 size={150}
@@ -191,7 +175,7 @@ const Profile = () => {
             </TextField>
           </form>
         </CardContent>
-        <CardFooter class="flex flex-col sm:flex-row justify-center gap-4 pb-6 pt-2">
+        <CardFooter class="flex flex-col sm:flex-row justify-center gap-3 pb-5 pt-1">
           <Button
             type="submit"
             onClick={updateProfile}
