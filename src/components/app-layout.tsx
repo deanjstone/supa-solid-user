@@ -6,12 +6,11 @@ import { UserNav } from "~/components/user-nav";
 import { SiteNav } from "~/components/site-nav";
 import Footer from "~/components/footer";
 
-
-interface AuthLayoutProps {
+interface AppLayoutProps {
   children: JSX.Element;
 }
 
-export function AuthLayout(props: AuthLayoutProps) {
+export function AppLayout(props: AppLayoutProps) {
   const [isAuthenticated, setIsAuthenticated] = createSignal(false);
   const navigate = useNavigate();
   const supabase = useSupabase();

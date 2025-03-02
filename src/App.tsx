@@ -2,7 +2,7 @@ import { Component } from "solid-js";
 import { Router, Route } from "@solidjs/router";
 import { Toaster } from "solid-toast";
 
-import { AuthLayout } from "~/components/auth-layout";
+import { AppLayout } from "~/components/app-layout";
 import Login from "~/components/Login"
 import Dashboard from "~/pages/dashboard";
 import Profile from "~/pages/profile";
@@ -20,29 +20,29 @@ const App: Component = () => {
         <Route path="/login" component={Login} />
         <Route path="/" component={Login} />
 
-        {/* Protected routes with AuthLayout */}
+        {/* Protected routes with AppLayout */}
         <Route
           path="/dashboard"
           component={() => (
-            <AuthLayout>
+            <AppLayout>
               <Dashboard />
-            </AuthLayout>
+            </AppLayout>
           )}
         />
         <Route
           path="/profile"
           component={() => (
-            <AuthLayout>
+            <AppLayout>
               <Profile />
-            </AuthLayout>
+            </AppLayout>
           )}
         />
         <Route
           path="/about"
           component={() => (
-            <AuthLayout>
+            <AppLayout>
               <About />
-            </AuthLayout>
+            </AppLayout>
           )}
         />
         {/* 404 route */}
