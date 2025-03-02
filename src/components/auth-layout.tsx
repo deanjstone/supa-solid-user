@@ -2,8 +2,10 @@ import { Show, JSX, createEffect, createSignal } from "solid-js";
 import { A, useNavigate } from "@solidjs/router";
 import { useSupabase } from "solid-supabase";
 
-import { UserNav } from "./user-nav";
-import { SiteNav } from "./site-nav";
+import { UserNav } from "~/components/user-nav";
+import { SiteNav } from "~/components/site-nav";
+import Footer from "~/components/footer";
+
 
 interface AuthLayoutProps {
   children: JSX.Element;
@@ -42,6 +44,7 @@ export function AuthLayout(props: AuthLayoutProps) {
           </div>
         </header>
         <main class="flex-1">{props.children}</main>
+        <Footer />
       </div>
     </Show>
   );
