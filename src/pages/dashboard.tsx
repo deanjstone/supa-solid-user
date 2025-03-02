@@ -6,7 +6,7 @@ const Dashboard = () => {
   const supabase = useSupabase();
 
   return (
-    <div class="flex min-h-screen flex-col">
+    <div class="flex flex-col">
       <div class="container flex-1 py-8">
         <div class="mb-8">
           <h1 class="text-2xl font-bold sm:text-3xl">Dashboard</h1>

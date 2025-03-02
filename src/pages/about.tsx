@@ -10,7 +10,7 @@ import {
 export default function About() {
   return (
     <>
-      <div class="flex min-h-screen flex-col items-center gap-3">
+      <div class="flex flex-col items-center gap-3">
         <PageHeaderHeading>About Page</PageHeaderHeading>
         <PageHeaderDescription>
           Nothing to see here yet. 😞

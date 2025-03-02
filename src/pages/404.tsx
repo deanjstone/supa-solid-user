@@ -9,7 +9,7 @@ import {
 
 export default function NotFound() {
   return (
-    <div class="flex min-h-screen flex-col items-center justify-center px-4 text-center">
+    <div class="flex flex-col items-center justify-center px-4 text-center">
       <div class="max-w-md space-y-6 py-10">
         <PageHeaderHeading class="text-3xl sm:text-4xl lg:text-5xl">
           Oops! Page not found.
