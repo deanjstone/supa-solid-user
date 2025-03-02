@@ -4,3 +4,4 @@ dist
 *.zip
 ref/
 .vscode/
+.vercel
