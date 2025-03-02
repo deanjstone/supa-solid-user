@@ -3,7 +3,7 @@ import { Router, Route } from "@solidjs/router";
 import { Toaster } from "solid-toast";
 
 import { AppLayout } from "~/components/app-layout";
-import Login from "~/components/Login"
+import Login from "~/pages/Login1";
 import Dashboard from "~/pages/dashboard";
 import Profile from "~/pages/profile";
 import About from "~/pages/about";
