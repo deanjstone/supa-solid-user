@@ -6,7 +6,7 @@ import solidPlugin from "vite-plugin-solid";
 export default defineConfig({
   plugins: [solidPlugin()],
   // Remove the base path setting for Vercel deployment
-  base: "",
+  base: process.env.NODE_ENV === "production" ? "/supa-solid-user" : "",
   resolve: {
     alias: {
       "~": path.resolve(__dirname, "./src"),
