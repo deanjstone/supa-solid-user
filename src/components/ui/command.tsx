@@ -9,7 +9,7 @@ import { splitProps } from "solid-js";
 import type { DialogRootProps } from "@kobalte/core/dialog";
 import * as CommandPrimitive from "cmdk-solid";
 
-import { cn } from "~/lib/utils";
+import { cn } from "~lib/utils";
 import { Dialog, DialogContent } from "~ui/dialog";
 
 const Command: Component<ParentProps<CommandPrimitive.CommandRootProps>> = (

@@ -6,7 +6,7 @@ import {
   type ComponentProps,
 } from "solid-js";
 
-import { cn } from "~/lib/utils";
+import { cn } from "~lib/utils";
 
 type DeltaBarProps = ComponentProps<"div"> & {
   value: number;

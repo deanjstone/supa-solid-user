@@ -24,7 +24,7 @@ import { Polymorphic } from "@kobalte/core";
 import type { VariantProps } from "class-variance-authority";
 import { cva } from "class-variance-authority";
 
-import { cn } from "~/lib/utils";
+import { cn } from "~lib/utils";
 import type { ButtonProps } from "~ui/button";
 import { Button } from "~ui/button";
 import { Separator } from "~ui/separator";
