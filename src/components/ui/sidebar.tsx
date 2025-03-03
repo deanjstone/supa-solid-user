@@ -25,13 +25,13 @@ import type { VariantProps } from "class-variance-authority";
 import { cva } from "class-variance-authority";
 
 import { cn } from "~/lib/utils";
-import type { ButtonProps } from "@ui/button";
-import { Button } from "@ui/button";
-import { Separator } from "@ui/separator";
-import { Sheet, SheetContent } from "@ui/sheet";
-import { Skeleton } from "@ui/skeleton";
-import { TextField, TextFieldInput } from "@ui/text-field";
-import { Tooltip, TooltipContent, TooltipTrigger } from "@ui/tooltip";
+import type { ButtonProps } from "~ui/button";
+import { Button } from "~ui/button";
+import { Separator } from "~ui/separator";
+import { Sheet, SheetContent } from "~ui/sheet";
+import { Skeleton } from "~ui/skeleton";
+import { TextField, TextFieldInput } from "~ui/text-field";
+import { Tooltip, TooltipContent, TooltipTrigger } from "~ui/tooltip";
 
 const MOBILE_BREAKPOINT = 768;
 const SIDEBAR_COOKIE_NAME = "sidebar:state";

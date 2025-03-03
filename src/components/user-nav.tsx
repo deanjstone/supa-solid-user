@@ -2,8 +2,8 @@ import { A } from "@solidjs/router";
 import { createResource } from "solid-js";
 import { useSupabase } from "solid-supabase";
 
-import { Avatar, AvatarFallback, AvatarImage } from "@ui/avatar";
-import { Button } from "@ui/button";
+import { Avatar, AvatarFallback, AvatarImage } from "~ui/avatar";
+import { Button } from "~ui/button";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -12,8 +12,8 @@ import {
   DropdownMenuLabel,
   DropdownMenuSeparator,
   DropdownMenuTrigger,
-} from "@ui/dropdown-menu";
-import { IconSettings, IconUser } from "@ui/icons";
+} from "~ui/dropdown-menu";
+import { IconSettings, IconUser } from "~ui/icons";
 
 export function UserNav() {
   const supabase = useSupabase();

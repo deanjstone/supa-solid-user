@@ -5,8 +5,8 @@ import type { VariantProps } from "class-variance-authority";
 import { cva } from "class-variance-authority";
 
 import { cn } from "~/lib/utils";
-import type { BadgeProps } from "@ui/badge";
-import { Badge } from "@ui/badge";
+import type { BadgeProps } from "~ui/badge";
+import { Badge } from "~ui/badge";
 
 type DeltaType =
   | "increase"

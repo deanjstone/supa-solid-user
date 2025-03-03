@@ -3,7 +3,7 @@ import { useNavigate } from "@solidjs/router";
 import { useSupabase } from "solid-supabase";
 import { toast } from "solid-toast";
 
-import { Button } from "@ui/button";
+import { Button } from "~ui/button";
 import {
   Card,
   CardContent,
@@ -11,14 +11,14 @@ import {
   CardFooter,
   CardHeader,
   CardTitle,
-} from "@ui/card";
+} from "~ui/card";
 import {
   TextField,
   TextFieldInput,
   TextFieldLabel,
   TextFieldDescription,
-} from "@ui/text-field";
-import { IconSend, IconUser, IconLink } from "@ui/icons";
+} from "~ui/text-field";
+import { IconSend, IconUser, IconLink } from "~ui/icons";
 
 import Avatar from "~/components/avatar-upload";
 

@@ -1,6 +1,6 @@
 import { A } from "@solidjs/router";
 
-import { Button } from "@ui/button";
+import { Button } from "~ui/button";
 import {
   PageHeaderActions,
   PageHeaderDescription,

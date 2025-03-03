@@ -1,6 +1,6 @@
 import { A } from "@solidjs/router";
-import { Button } from "@ui/button";
-import { IconLogOut } from "@ui/icons";
+import { Button } from "~ui/button";
+import { IconLogOut } from "~ui/icons";
 import { useSupabase } from "solid-supabase";
 
 export function SignOut(props: {

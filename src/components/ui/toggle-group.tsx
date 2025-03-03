@@ -6,7 +6,7 @@ import * as ToggleGroupPrimitive from "@kobalte/core/toggle-group";
 import type { VariantProps } from "class-variance-authority";
 
 import { cn } from "~/lib/utils";
-import { toggleVariants } from "@ui/toggle";
+import { toggleVariants } from "~ui/toggle";
 
 const ToggleGroupContext = createContext<VariantProps<typeof toggleVariants>>({
   size: "default",
